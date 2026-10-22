@@ -1,3 +1,5 @@
+한국어&emsp;&emsp;[English](README.en.md)
+
 # Film Filter Studio — Film Science Engine v2.0
 
 브라우저에서 사진에 필름의 색감·입상성·할레이션과 빈티지 렌즈의 광학 효과를 적용하는 사진 처리 도구입니다. sRGB 이미지를 선형 광량으로 변환한 뒤 필름 특성곡선과 노이즈 모델을 적용하고 JPEG로 저장합니다.
@@ -283,3 +285,4 @@ UI용 `films` 배열은 `FILM_DB`와 별개입니다. 허용된 범위에서 새
 EULA 화면에서 언급하는 `LICENSE.txt`는 현재 저장소에 없습니다. 전체 안내는 `index.html`의 소스 상단 및 사용권 계약서를 확인하세요.
 
 Copyright © 2026 Velvitty(연이. Yeony.). All rights reserved.
+
