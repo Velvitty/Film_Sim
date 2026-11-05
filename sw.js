@@ -1,6 +1,6 @@
 /* Project-local PWA cache. Offline launches display a connection notice. */
 'use strict';
-const VERSION = "a7058a826c3f555d";
+const VERSION = "6264e901d4ca23ac";
 const APP = "Film_Sim";
 const CORE = ["./manifest.webmanifest", "./pwa.js", "./offline.html", "./pwa-icon-192.png", "./pwa-icon-512.png", "./pwa-icon-maskable.png", "./apple-touch-icon.png"];
 const OPTIONAL = [];
@@ -17,6 +17,7 @@ const MAX_BYTES = 4 * 1024 * 1024;
 
 const UI_URL = new URL('./pwa-ui.html', SCOPE).href;
 function uiOnly(source) {
+  source = source.replace(/<!-- Velvitty launch screen -->[\s\S]*?<!-- \/Velvitty launch screen -->/gi, '');
   source = source.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '');
   source = source.replace(/<(?:iframe|object)\b[^>]*>[\s\S]*?<\/(?:iframe|object)\s*>/gi, '');
   source = source.replace(/<(?:base|embed)\b[^>]*>/gi, '');

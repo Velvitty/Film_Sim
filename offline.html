@@ -1,10 +1,1387 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#181818"><title>Film Filter Studio · 연결 확인</title><style>html{margin:0;min-height:100%;background:#181818}body{margin:0;position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;align-items:safe center;overflow:auto;box-sizing:border-box;padding:28px;background:var(--app-ui-background,#181818);color:#fff;font:16px/1.7 system-ui,-apple-system,"Noto Sans KR",sans-serif;text-align:center;isolation:isolate}
-*{box-sizing:border-box}.app-backdrop{position:fixed;inset:-5px;z-index:-2;width:calc(100% + 10px);height:calc(100% + 10px);border:0;pointer-events:none;opacity:.84;filter:none;background:transparent}.scene{position:fixed;inset:0;z-index:-1;background:transparent;backdrop-filter:blur(1.8px);-webkit-backdrop-filter:blur(1.8px);pointer-events:none}
-.glass{--lens-radius:32px;position:relative;isolation:isolate;width:min(620px,100%);padding:38px 42px 34px;border:1px solid #ffffff1a;border-radius:var(--lens-radius);background:rgb(var(--glass-rgb,255 255 255)/var(--glass-alpha,.075));backdrop-filter:blur(8.5px);-webkit-backdrop-filter:blur(8.5px);box-shadow:0 36px 88px -22px rgb(0 0 0/var(--glass-shadow-opacity,.34)),0 12px 32px -10px #0000002e,0 2px 8px -3px #0000001a,inset 0 1px 2px #ffffff30,inset 0 -1px 2px #ffffff12;pointer-events:none;filter:none;opacity:1}.lens-clip{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none}.lens-optics{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;background:transparent;filter:none}.lens-copy{position:absolute;display:block;max-width:none;margin:0;padding:0;border:0;pointer-events:none;opacity:calc(1 - var(--glass-alpha,.075));background:transparent;filter:none}.glass:before{content:"";position:absolute;z-index:2;inset:0;padding:1px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 142deg at 50% 50%,transparent 0deg,#ff9d7f88 9deg,#ffd17377 19deg,#a8edc777 29deg,#88dcff88 39deg,#aeb4ff88 49deg,#e0acff77 59deg,transparent 78deg,transparent 175deg,#e0acff66 190deg,#88dcff77 205deg,#a8edc766 217deg,#ffd17366 229deg,#ff9d7f66 241deg,transparent 260deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}.glass:after{content:"";position:absolute;z-index:2;inset:-4px -3px -7px;border-radius:calc(var(--lens-radius) + 4px);border:1px solid #ffffff0d;box-shadow:inset 0 -2px 3px #ffffff0d;pointer-events:none}.brand{position:relative;z-index:3;margin:0 0 28px;color:#f4f4f4;font-size:13px;font-weight:500;letter-spacing:.04em;overflow-wrap:anywhere;text-shadow:0 1px 4px #0007}.symbol{position:relative;z-index:3;display:grid;place-items:center;width:72px;height:72px;margin:0 auto 26px;border:1px solid #ffffff35;border-radius:22px;background:linear-gradient(135deg,#ffffff14,#ffffff02);box-shadow:inset 0 1px 1px #ffffff70,inset 0 -2px 2px #ffffff20,0 3px 7px #0002;color:#fff}.symbol svg{width:32px;height:32px}.primary{position:relative;z-index:3;margin:0;font-size:clamp(18px,2.8vw,23px);line-height:1.75;font-weight:600;letter-spacing:-.04em;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 1px 5px #0008}.secondary{position:relative;z-index:3;margin:20px 0 29px;color:#f1f1f1;font-size:15px;line-height:1.75;word-break:keep-all;text-shadow:0 1px 4px #0007}.retry-note{position:relative;z-index:3;margin:27px 0 0;color:#e5e5e5;font-size:12px;line-height:1.8;word-break:keep-all;letter-spacing:-.02em;text-shadow:0 1px 3px #0006}.retry-surface{position:fixed;inset:0;z-index:5;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:pointer;outline:none}.retry-surface:focus-visible~.glass{outline:3px solid #fff;outline-offset:10px}
+*{box-sizing:border-box}.app-backdrop{position:fixed;inset:-5px;z-index:0;width:calc(100% + 10px);height:calc(100% + 10px);border:0;pointer-events:none;opacity:.84;filter:none;background:transparent}.scene{position:fixed;inset:0;z-index:1;background:transparent;backdrop-filter:blur(1.8px);-webkit-backdrop-filter:blur(1.8px);pointer-events:none}
+.glass{--lens-radius:32px;position:relative;z-index:2;isolation:isolate;width:min(620px,100%);padding:38px 42px 34px;border:1px solid #ffffff1a;border-radius:var(--lens-radius);background:rgb(var(--glass-rgb,255 255 255)/var(--glass-alpha,.075));backdrop-filter:blur(8.5px);-webkit-backdrop-filter:blur(8.5px);box-shadow:0 36px 88px -22px rgb(0 0 0/var(--glass-shadow-opacity,.34)),0 12px 32px -10px #0000002e,0 2px 8px -3px #0000001a,inset 0 1px 2px #ffffff30,inset 0 -1px 2px #ffffff12;pointer-events:none;filter:none;opacity:1}.lens-clip{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none}.lens-optics{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;background:transparent;filter:none}.lens-copy{position:absolute;display:block;max-width:none;margin:0;padding:0;border:0;pointer-events:none;opacity:calc(1 - var(--glass-alpha,.075));background:transparent;filter:none}.glass:before{content:"";position:absolute;z-index:2;inset:0;padding:1px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 142deg at 50% 50%,transparent 0deg,#ff9d7f88 9deg,#ffd17377 19deg,#a8edc777 29deg,#88dcff88 39deg,#aeb4ff88 49deg,#e0acff77 59deg,transparent 78deg,transparent 175deg,#e0acff66 190deg,#88dcff77 205deg,#a8edc766 217deg,#ffd17366 229deg,#ff9d7f66 241deg,transparent 260deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}.glass:after{content:"";position:absolute;z-index:2;inset:-4px -3px -7px;border-radius:calc(var(--lens-radius) + 4px);border:1px solid #ffffff0d;box-shadow:inset 0 -2px 3px #ffffff0d;pointer-events:none}.brand{position:relative;z-index:3;margin:0 0 28px;color:#f4f4f4;font-size:13px;font-weight:500;letter-spacing:.04em;overflow-wrap:anywhere;text-shadow:0 1px 4px #0007}.symbol{position:relative;z-index:3;display:grid;place-items:center;width:72px;height:72px;margin:0 auto 26px;border:1px solid #ffffff35;border-radius:22px;background:linear-gradient(135deg,#ffffff14,#ffffff02);box-shadow:inset 0 1px 1px #ffffff70,inset 0 -2px 2px #ffffff20,0 3px 7px #0002;color:#fff}.symbol svg{width:32px;height:32px}.primary{position:relative;z-index:3;margin:0;font-size:clamp(18px,2.8vw,23px);line-height:1.75;font-weight:600;letter-spacing:-.04em;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 1px 5px #0008}.secondary{position:relative;z-index:3;margin:20px 0 29px;color:#f1f1f1;font-size:15px;line-height:1.75;word-break:keep-all;text-shadow:0 1px 4px #0007}.retry-note{position:relative;z-index:3;margin:27px 0 0;color:#e5e5e5;font-size:12px;line-height:1.8;word-break:keep-all;letter-spacing:-.02em;text-shadow:0 1px 3px #0006}.retry-surface{position:fixed;inset:0;z-index:5;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:pointer;outline:none}.retry-surface:focus-visible~.glass{outline:3px solid #fff;outline-offset:10px}
 @media(max-width:540px){body{padding:20px}.glass{padding:28px 23px}.brand{margin-bottom:25px}.symbol{width:64px;height:64px;margin-bottom:23px}.secondary{font-size:14px;margin-top:17px;margin-bottom:25px}}
 
 .glass{--lens-ink:#fff;--lens-muted:#ededed}.glass[data-surface="light"]{--lens-ink:#171717;--lens-muted:#444}.glass :is(.brand,.primary,.symbol){color:var(--lens-ink)}.glass :is(.secondary,.retry-note){color:var(--lens-muted)}.glass[data-surface="light"] :is(.brand,.primary,.secondary,.retry-note){text-shadow:none}
-</style></head><body><iframe class="app-backdrop" title="" sandbox="allow-same-origin" tabindex="-1" inert aria-hidden="true"></iframe><button class="retry-surface" type="button" onclick="location.reload()" aria-label="연결을 다시 시도하려면 화면을 아무 곳이나 누르세요."></button><div class="scene" aria-hidden="true"></div><main class="glass" role="alert" aria-live="assertive" aria-labelledby="connection-message" aria-describedby="connection-guide"><h1 class="brand">Film Filter Studio</h1><div class="symbol"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a20 20 0 0 1 5-3m6-1a20 20 0 0 1 13 4M8 16a13 13 0 0 1 5-2m6 0a13 13 0 0 1 5 2M12 21a7 7 0 0 1 8 0M16 26h.01M4 4l24 24"/></svg></div><p class="primary" id="connection-message">인터넷 연결 상태가 불안정하여 어플리케이션을 실행할 수 없습니다.</p><p class="secondary" id="connection-guide">네트워크 환경을 확인해 주세요.</p><p class="retry-note">연결을 다시 시도하려면 화면을 아무 곳이나 누르세요.</p></main><script>function installGlassLens(root) {
+</style></head><body><iframe class="app-backdrop" title="" sandbox="allow-same-origin" tabindex="-1" inert aria-hidden="true" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+
+&lt;head&gt;&lt;base href=&quot;./&quot;&gt;&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;none&#x27;; connect-src &#x27;none&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27; https:; img-src &#x27;self&#x27; data: https:; font-src &#x27;self&#x27; data: https:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; form-action &#x27;none&#x27;; base-uri &#x27;self&#x27;&quot;&gt;&lt;style&gt;html{pointer-events:none!important}*{animation-play-state:paused!important;caret-color:transparent!important}&lt;/style&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, viewport-fit=cover&quot;&gt;
+
+
+    &lt;meta name=&quot;theme-color&quot; content=&quot;#f4f7fb&quot;&gt;
+    &lt;meta name=&quot;color-scheme&quot; content=&quot;light&quot;&gt;
+    &lt;title&gt;Film Filter Studio — 필름의 온도를 당신의 사진에&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;amp;family=DM+Sans:wght@300;400;500;600&amp;amp;family=Space+Mono:wght@400;700&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        /* ============================================================================
+           Film Filter Studio — 라이트 글래스모피즘 UI
+           ----------------------------------------------------------------------------
+           설계 방침
+             · 모바일 퍼스트: 기본 스타일이 폰 기준, 미디어 쿼리로 넓은 화면을 덧씌운다
+             · 밝은 메시 그라데이션 배경 위에 반투명 유리 카드(backdrop-filter)를 띄운다
+             · 터치 타겟 최소 48px, 폰에서는 미리보기가 상단 고정 + 실행 버튼이 하단 고정
+             · 노치/홈 인디케이터 대응(safe-area-inset)
+           ========================================================================== */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: light;               /* 브라우저 기본 위젯도 라이트로 고정 */
+
+            /* 배경 메시를 구성하는 파스텔 */
+            --mesh-1: #ffd9c4;                 /* 따뜻한 살구 */
+            --mesh-2: #c9e0ff;                 /* 맑은 하늘 */
+            --mesh-3: #d6f5e3;                 /* 연한 민트 */
+            --mesh-4: #efdcff;                 /* 옅은 라벤더 */
+            --canvas:  #f4f7fb;                /* 바탕 */
+
+            /* 유리 표면 */
+            --glass:        rgba(255, 255, 255, 0.58);
+            --glass-strong: rgba(255, 255, 255, 0.78);
+            --glass-soft:   rgba(255, 255, 255, 0.38);
+            --stroke:       rgba(255, 255, 255, 0.85);
+            --stroke-soft:  rgba(17, 24, 39, 0.07);
+            --blur: saturate(180%) blur(22px);
+
+            /* 잉크(글자) */
+            --ink:   #14161d;
+            --ink-2: #454a58;
+            --ink-3: #7b8194;
+            --ink-4: #a4aab8;
+
+            /* 강조색 */
+            --accent:    #ff6a3d;              /* 필름 오렌지 */
+            --accent-2:  #4a7dff;              /* 시안 블루 */
+            --accent-3:  #12b981;              /* 그린 */
+            --danger:    #ef4444;
+
+            /* 그림자 — 유리의 부유감을 만드는 핵심 */
+            --shadow-sm: 0 2px 8px rgba(23, 31, 56, 0.06);
+            --shadow:    0 10px 30px rgba(23, 31, 56, 0.10), 0 2px 6px rgba(23, 31, 56, 0.04);
+            --shadow-lg: 0 24px 60px rgba(23, 31, 56, 0.16), 0 4px 12px rgba(23, 31, 56, 0.06);
+
+            --r-sm: 12px;
+            --r:    18px;
+            --r-lg: 26px;
+
+            /* 노치·홈바 안전영역 */
+            --sat: env(safe-area-inset-top, 0px);
+            --sab: env(safe-area-inset-bottom, 0px);
+            --sal: env(safe-area-inset-left, 0px);
+            --sar: env(safe-area-inset-right, 0px);
+        }
+
+        html {
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;    /* iOS 가로모드 글자 확대 방지 */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: &#x27;DM Sans&#x27;, -apple-system, BlinkMacSystemFont,
+                         &#x27;Pretendard&#x27;, &#x27;Apple SD Gothic Neo&#x27;, &#x27;Noto Sans KR&#x27;,
+                         system-ui, sans-serif;
+            background: var(--canvas);
+            color: var(--ink);
+            min-height: 100dvh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;   /* 탭 시 파란 사각형 제거 */
+            padding: calc(16px + var(--sat)) calc(14px + var(--sar))
+                     calc(16px + var(--sab)) calc(14px + var(--sal));
+        }
+
+        /* 메시 그라데이션 배경 — 고정 레이어라 스크롤해도 따라오지 않는다 */
+        body::before {
+            content: &#x27;&#x27;;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(70vw 60vh at 4% -8%,   var(--mesh-1) 0%, transparent 62%),
+                radial-gradient(65vw 55vh at 104% 2%,  var(--mesh-2) 0%, transparent 58%),
+                radial-gradient(80vw 60vh at 50% 108%, var(--mesh-3) 0%, transparent 62%),
+                radial-gradient(60vw 50vh at 96% 96%,  var(--mesh-4) 0%, transparent 58%),
+                linear-gradient(175deg, #fbfcfe 0%, var(--canvas) 100%);
+        }
+
+        /* 아주 옅은 필름 그레인 텍스처 — 유리 표면에 촉감을 준다 */
+        body::after {
+            content: &#x27;&#x27;;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox=&#x27;0 0 256 256&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%3E%3Cfilter id=&#x27;n&#x27;%3E%3CfeTurbulence type=&#x27;fractalNoise&#x27; baseFrequency=&#x27;0.85&#x27; numOctaves=&#x27;4&#x27; stitchTiles=&#x27;stitch&#x27;/%3E%3C/filter%3E%3Crect width=&#x27;100%25&#x27; height=&#x27;100%25&#x27; filter=&#x27;url(%23n)&#x27;/%3E%3C/svg%3E&quot;);
+        }
+
+        .app {
+            position: relative;
+            max-width: 1560px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        /* ── 유리 카드 공통 ────────────────────────────────────────────────── */
+        .glass {
+            background: var(--glass);
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 상단 하이라이트 — 유리 모서리에 빛이 걸린 느낌 */
+        .glass::before {
+            content: &#x27;&#x27;;
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: linear-gradient(160deg,
+                        rgba(255, 255, 255, 0.55) 0%,
+                        rgba(255, 255, 255, 0) 38%);
+        }
+
+        /* backdrop-filter 미지원 브라우저에서는 불투명도를 높여 가독성 확보 */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .glass, .eula-modal, .status-toast, .progress-message { background: rgba(255, 255, 255, 0.94); }
+        }
+
+        /* ── 헤더 ───────────────────────────────────────────────────────────── */
+        .header {
+            text-align: center;
+            padding: 22px 16px 24px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-family: &#x27;Playfair Display&#x27;, &#x27;DM Sans&#x27;, serif;
+            font-size: clamp(1.75rem, 7vw, 3.1rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            background: linear-gradient(115deg, #ff6a3d 0%, #b8479a 42%, #4a7dff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--accent);              /* 그라데이션 미지원 시 폴백 */
+        }
+
+        .header .creator {
+            margin-top: 8px;
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+            color: var(--ink-2);
+            background: var(--glass-strong);
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header .creator strong { color: var(--ink); }
+
+        .header p {
+            margin-top: 10px;
+            color: var(--ink-3);
+            font-size: clamp(0.86rem, 3.4vw, 1rem);
+        }
+
+        /* ── 레이아웃 ───────────────────────────────────────────────────────── */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;        /* 모바일: 한 줄 */
+            gap: 14px;
+        }
+
+        .controls-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .control-card {
+            padding: 18px 16px;
+        }
+
+        .control-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-card h3 span {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ink-3);
+            background: rgba(17, 24, 39, 0.05);
+            padding: 2px 8px;
+            border-radius: 999px;
+        }
+
+        /* ── 미리보기 ───────────────────────────────────────────────────────── */
+        .preview-panel {
+            order: -1;                          /* 모바일: 컨트롤보다 위 */
+            position: sticky;
+            top: calc(6px + var(--sat));        /* 스크롤해도 사진이 계속 보이게 */
+            z-index: 30;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--glass-strong);
+        }
+
+        .preview-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 4px;
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.05);
+        }
+
+        .preview-tab {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            border-radius: 999px;
+            padding: 10px 8px;
+            min-height: 42px;
+            font: inherit;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink-3);
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+
+        .preview-tab.active {
+            color: var(--ink);
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .preview-content {
+            flex: 1;
+            min-height: 150px;
+            max-height: 38vh;                   /* 모바일에서 화면을 다 먹지 않도록 */
+            border-radius: var(--r);
+            background:
+                linear-gradient(45deg, rgba(17,24,39,0.035) 25%, transparent 25%) 0 0/16px 16px,
+                linear-gradient(-45deg, rgba(17,24,39,0.035) 25%, transparent 25%) 0 8px/16px 16px,
+                rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-content img {
+            max-width: 100%;
+            max-height: 38vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(23, 31, 56, 0.14);
+        }
+
+        .empty-preview {
+            text-align: center;
+            color: var(--ink-4);
+            padding: 28px 18px;
+        }
+
+        .empty-preview svg {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        /* JS가 안내 문구를 지우고 &lt;img&gt;를 넣으면 빈 상태용 여백을 걷어낸다.
+           (JS가 display:block을 인라인으로 지정하므로 margin auto로 가운데 정렬) */
+        .empty-preview:has(img) { padding: 0; width: 100%; }
+        .empty-preview img { margin: 0 auto; }
+
+        /* ── 업로드 존 ──────────────────────────────────────────────────────── */
+        .upload-zone {
+            border: 2px dashed rgba(74, 125, 255, 0.35);
+            border-radius: var(--r);
+            padding: 26px 16px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.45);
+            transition: border-color 0.2s, background 0.2s, transform 0.15s;
+            min-height: 128px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .upload-zone:active { transform: scale(0.985); }
+
+        .upload-zone.dragover {
+            border-color: var(--accent);
+            background: rgba(255, 106, 61, 0.09);
+        }
+
+        .upload-icon { font-size: 2rem; margin-bottom: 8px; }
+
+        .upload-text {
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .upload-hint { font-size: 0.78rem; color: var(--ink-3); }
+
+        /* ── 필름 선택 ──────────────────────────────────────────────────────── */
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+            gap: 8px;
+        }
+
+        .film-option {
+            padding: 12px 10px;
+            min-height: 66px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 255, 255, 0.55);
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            transition: transform 0.15s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .film-option:active { transform: scale(0.97); }
+
+        .film-option.selected {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(255, 106, 61, 0.14), rgba(255, 255, 255, 0.7));
+            box-shadow: 0 6px 18px rgba(255, 106, 61, 0.22);
+        }
+
+        .film-name {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .film-desc {
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            margin-top: 3px;
+        }
+
+        /* ── 필름 특성 패널 ─────────────────────────────────────────────────── */
+        .film-info { font-size: 0.85rem; }
+
+        .fi-title {
+            font-size: 1.02rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        .fi-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .fi-tag {
+            font-size: 0.71rem;
+            font-weight: 600;
+            padding: 4px 9px;
+            border-radius: 999px;
+            color: var(--accent-2);
+            background: rgba(74, 125, 255, 0.11);
+            border: 1px solid rgba(74, 125, 255, 0.18);
+            white-space: nowrap;
+        }
+
+        .fi-note {
+            color: var(--ink-2);
+            line-height: 1.65;
+            font-size: 0.83rem;
+            padding: 12px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 255, 255, 0.55);
+            border-left: 3px solid var(--accent);
+        }
+
+        .fi-specs {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: auto 1fr;    /* 라벨 | 값 */
+            gap: 0;
+            border-radius: var(--r-sm);
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--stroke-soft);
+        }
+
+        .fi-specs dt {
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ink-3);
+            border-top: 1px solid var(--stroke-soft);
+            white-space: nowrap;
+        }
+
+        .fi-specs dd {
+            padding: 8px 10px;
+            font-size: 0.78rem;
+            color: var(--ink);
+            border-top: 1px solid var(--stroke-soft);
+            font-variant-numeric: tabular-nums;
+            word-break: keep-all;
+        }
+
+        .fi-specs dt:first-of-type, .fi-specs dd:first-of-type { border-top: 0; }
+
+        /* ── 슬라이더 ───────────────────────────────────────────────────────── */
+        .slider-control { margin-bottom: 4px; }
+        .slider-control + .slider-control { margin-top: 16px; }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+
+        .slider-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink-2);
+        }
+
+        .slider-value {
+            font-family: &#x27;Space Mono&#x27;, ui-monospace, monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(255, 106, 61, 0.1);
+            padding: 3px 9px;
+            border-radius: 999px;
+            min-width: 58px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        input[type=&quot;range&quot;] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 34px;                       /* 터치 영역 확보 */
+            background: transparent;
+            cursor: pointer;
+        }
+
+        input[type=&quot;range&quot;]::-webkit-slider-runnable-track {
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255,106,61,0.45), rgba(74,125,255,0.4));
+            border: 1px solid var(--stroke-soft);
+        }
+
+        input[type=&quot;range&quot;]::-moz-range-track {
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255,106,61,0.45), rgba(74,125,255,0.4));
+            border: 1px solid var(--stroke-soft);
+        }
+
+        input[type=&quot;range&quot;]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            margin-top: -10px;                  /* 트랙 중앙 정렬 */
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--accent);
+            box-shadow: 0 3px 10px rgba(23, 31, 56, 0.2);
+            transition: transform 0.12s;
+        }
+
+        input[type=&quot;range&quot;]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--accent);
+            box-shadow: 0 3px 10px rgba(23, 31, 56, 0.2);
+        }
+
+        input[type=&quot;range&quot;]:active::-webkit-slider-thumb { transform: scale(1.15); }
+
+        /* ── 셀렉트 ─────────────────────────────────────────────────────────── */
+        .select-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .select-row label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink-2);
+        }
+
+        .select-row select {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            min-height: 48px;                   /* 터치 타겟 */
+            padding: 12px 40px 12px 14px;
+            font: inherit;
+            font-size: 0.9rem;
+            color: var(--ink);
+            border-radius: var(--r-sm);
+            border: 1px solid var(--stroke-soft);
+            background-color: rgba(255, 255, 255, 0.8);
+            background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;14&#x27; height=&#x27;9&#x27; viewBox=&#x27;0 0 14 9&#x27;%3E%3Cpath d=&#x27;M1 1l6 6 6-6&#x27; stroke=&#x27;%237b8194&#x27; stroke-width=&#x27;2&#x27; fill=&#x27;none&#x27; stroke-linecap=&#x27;round&#x27; stroke-linejoin=&#x27;round&#x27;/%3E%3C/svg%3E&quot;);
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        .select-row select:focus-visible {
+            outline: 2px solid var(--accent-2);
+            outline-offset: 2px;
+        }
+
+        .hint {
+            margin-top: 8px;
+            font-size: 0.76rem;
+            line-height: 1.6;
+            color: var(--ink-3);
+            padding: 10px 12px;
+            border-radius: var(--r-sm);
+            background: rgba(74, 125, 255, 0.07);
+            border: 1px solid rgba(74, 125, 255, 0.14);
+            word-break: keep-all;
+        }
+
+        /* ── 버튼 ───────────────────────────────────────────────────────────── */
+        .button-group {
+            position: sticky;                   /* 모바일: 화면 하단에 붙여 항상 누를 수 있게 */
+            bottom: calc(6px + var(--sab));
+            z-index: 40;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 10px;
+            border-radius: var(--r-lg);
+            background: var(--glass-strong);
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .button-group .btn:first-child { grid-column: 1 / -1; }   /* 적용 버튼은 전체 폭 */
+
+        .btn {
+            appearance: none;
+            border: 0;
+            font: inherit;
+            font-weight: 700;
+            font-size: 0.92rem;
+            min-height: 52px;
+            padding: 14px 16px;
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.14s, box-shadow 0.2s, opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn:active:not(:disabled) { transform: scale(0.97); }
+
+        .btn:disabled {
+            opacity: 0.42;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(120deg, #ff6a3d 0%, #ff4d7d 52%, #7b5cff 100%);
+            box-shadow: 0 8px 22px rgba(255, 90, 70, 0.34);
+        }
+
+        .btn-secondary {
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid var(--stroke-soft);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--accent-2);
+            outline-offset: 2px;
+        }
+
+        /* ── 진행 상황 ──────────────────────────────────────────────────────── */
+        .progress-card {
+            margin-top: 14px;
+            padding: 16px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .progress-percentage {
+            font-family: &#x27;Space Mono&#x27;, ui-monospace, monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-bar-container {
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.07);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ff6a3d, #ff4d7d, #7b5cff);
+            transition: width 0.3s ease;
+        }
+
+        .progress-log {
+            margin-top: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 12px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--stroke-soft);
+            font-family: &#x27;Space Mono&#x27;, ui-monospace, monospace;
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: var(--ink-2);
+            overscroll-behavior: contain;       /* 로그 스크롤이 페이지로 새지 않게 */
+        }
+
+        .log-line {
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
+
+        .separator {
+            height: 1px;
+            margin: 8px 0;
+            background: var(--stroke-soft);
+        }
+
+        /* 스크롤바 (WebKit) */
+        .progress-log::-webkit-scrollbar { width: 6px; }
+        .progress-log::-webkit-scrollbar-thumb {
+            background: rgba(17, 24, 39, 0.18);
+            border-radius: 999px;
+        }
+
+        /* ── 중앙 안내 메시지 ───────────────────────────────────────────────── */
+        .center-progress {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 9000;
+            padding: 20px;
+        }
+
+        .progress-message {
+            padding: 16px 26px;
+            border-radius: var(--r-lg);
+            background: var(--glass-strong);
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: center;
+            max-width: min(92vw, 460px);
+            opacity: 0;
+            transform: translateY(14px) scale(0.96);
+            transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .progress-message.show { opacity: 1; transform: translateY(0) scale(1); }
+        .progress-message.hide { opacity: 0; transform: translateY(-10px) scale(0.97); }
+
+        /* ── 토스트 ─────────────────────────────────────────────────────────── */
+        .status-toast {
+            position: fixed;
+            left: 50%;
+            top: calc(12px + var(--sat));
+            transform: translate(-50%, -130%) scale(0.95);   /* 모바일: 상단 중앙 */
+            width: min(92vw, 420px);
+            padding: 14px 18px;
+            border-radius: var(--r);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-align: center;
+            z-index: 10000;
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s, transform 0.42s cubic-bezier(0.22, 1.4, 0.4, 1);
+        }
+
+        .status-toast.visible {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .status-toast.success { background: rgba(18, 185, 129, 0.92); color: #fff; }
+        .status-toast.error   { background: rgba(239, 68, 68, 0.92);  color: #fff; }
+        .status-toast.info    { background: rgba(74, 125, 255, 0.92); color: #fff; }
+
+        /* ── EULA 모달 ──────────────────────────────────────────────────────── */
+        .eula-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(12px + var(--sat)) 12px calc(12px + var(--sab));
+            background: rgba(180, 195, 220, 0.45);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+        }
+
+        .eula-modal {
+            width: min(100%, 620px);
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: var(--r-lg);
+            background: rgba(255, 255, 255, 0.88);
+            -webkit-backdrop-filter: var(--blur);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .eula-header {
+            padding: 20px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid var(--stroke-soft);
+            background: linear-gradient(135deg, rgba(255,106,61,0.10), rgba(74,125,255,0.10));
+        }
+
+        .eula-header h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .eula-header p {
+            margin-top: 4px;
+            font-size: 0.76rem;
+            color: var(--ink-3);
+        }
+
+        .eula-content {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            padding: 18px;
+        }
+
+        .eula-section { margin-bottom: 18px; }
+
+        .eula-section h3 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .eula-section p {
+            font-size: 0.82rem;
+            line-height: 1.65;
+            color: var(--ink-2);
+            margin-bottom: 4px;
+            word-break: keep-all;
+        }
+
+        .eula-highlight {
+            padding: 14px;
+            margin-bottom: 18px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 106, 61, 0.09);
+            border: 1px solid rgba(255, 106, 61, 0.2);
+            font-size: 0.82rem;
+            line-height: 1.8;
+            color: var(--ink-2);
+        }
+
+        .eula-highlight strong { color: var(--accent); }
+
+        .eula-checkbox {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .eula-checkbox label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            padding: 13px;
+            min-height: 52px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--stroke-soft);
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .eula-checkbox label:has(input:checked) {
+            border-color: var(--accent-3);
+            background: rgba(18, 185, 129, 0.08);
+        }
+
+        .eula-checkbox input[type=&quot;checkbox&quot;] {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            accent-color: var(--accent-3);
+            cursor: pointer;
+        }
+
+        .eula-checkbox span {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--ink-2);
+            word-break: keep-all;
+        }
+
+        .eula-footer {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 8px;
+            padding: 14px;
+            border-top: 1px solid var(--stroke-soft);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .eula-btn {
+            appearance: none;
+            border: 0;
+            font: inherit;
+            font-weight: 700;
+            font-size: 0.88rem;
+            min-height: 50px;
+            padding: 13px 14px;
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            transition: transform 0.14s, opacity 0.2s;
+        }
+
+        .eula-btn:active:not(:disabled) { transform: scale(0.97); }
+
+        .eula-btn-accept {
+            color: #fff;
+            background: linear-gradient(120deg, #12b981, #0ea5a5);
+            box-shadow: 0 8px 20px rgba(18, 185, 129, 0.3);
+        }
+
+        .eula-btn-accept:disabled {
+            background: rgba(17, 24, 39, 0.12);
+            color: var(--ink-4);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .eula-btn-decline {
+            color: var(--ink-2);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--stroke-soft);
+        }
+
+        /* ── 푸터 ───────────────────────────────────────────────────────────── */
+        .footer {
+            margin-top: 18px;
+            padding: 22px 16px calc(22px + var(--sab));
+            text-align: center;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--ink-3);
+            border-radius: var(--r-lg);
+            background: var(--glass-soft);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--stroke);
+            word-break: keep-all;
+        }
+
+        .footer strong { color: var(--ink-2); }
+
+        .footer button {
+            appearance: none;
+            margin-top: 14px;
+            padding: 11px 20px;
+            min-height: 44px;
+            font: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--ink-2);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--stroke-soft);
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .footer button:active { transform: scale(0.97); }
+
+        /* ── 로딩 스피너 ────────────────────────────────────────────────────── */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ============================================================================
+           태블릿 — 640px 이상
+           ========================================================================== */
+        @media (min-width: 640px) {
+            body { padding: calc(22px + var(--sat)) 22px calc(22px + var(--sab)); }
+
+            .control-card { padding: 22px 20px; }
+
+            .film-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+
+            .fi-specs { grid-template-columns: 110px 1fr; }
+
+            .button-group { grid-template-columns: 1.6fr 1fr 1fr; }
+            .button-group .btn:first-child { grid-column: auto; }
+
+            .preview-content, .preview-content img { max-height: 52vh; }
+
+            .eula-content { padding: 24px; }
+        }
+
+        /* ============================================================================
+           데스크톱 — 1100px 이상: 2단 레이아웃, 미리보기 고정
+           ========================================================================== */
+        @media (min-width: 1100px) {
+            .main-grid {
+                grid-template-columns: minmax(360px, 420px) 1fr;
+                align-items: start;
+                gap: 18px;
+            }
+
+            .controls-panel { gap: 18px; }
+
+            /* 넓은 화면에서는 미리보기를 오른쪽으로, 스크롤 고정 유지 */
+            .preview-panel {
+                order: 0;
+                position: sticky;
+                top: 18px;
+                padding: 14px;
+                min-height: calc(100vh - 140px);
+            }
+
+            .preview-content { max-height: none; min-height: 420px; }
+            .preview-content img { max-height: calc(100vh - 260px); }
+
+            .preview-tabs {
+                grid-template-columns: repeat(2, minmax(120px, 180px));
+                justify-content: center;
+            }
+
+            /* 데스크톱에서는 버튼 고정이 불필요 */
+            .button-group {
+                position: static;
+                background: var(--glass);
+                box-shadow: var(--shadow);
+                padding: 12px;
+            }
+
+            .status-toast {
+                left: auto;
+                right: 24px;
+                top: 24px;
+                transform: translateX(120%) scale(0.95);
+            }
+
+            .status-toast.visible { transform: translateX(0) scale(1); }
+
+            .progress-log { max-height: 260px; }
+        }
+
+        /* ============================================================================
+           접근성 — 모션 최소화 설정을 존중
+           ========================================================================== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* 가로가 아주 짧은 화면(폰 가로모드)에서는 미리보기 고정을 해제 */
+        @media (max-height: 520px) and (max-width: 1099px) {
+            .preview-panel { position: static; }
+            .button-group  { position: static; }
+        }
+    &lt;/style&gt;
+
+
+
+&lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;default&quot;&gt;
+
+
+&lt;/head&gt;
+&lt;body inert&gt;
+    
+    &lt;div class=&quot;center-progress&quot;&gt;
+        &lt;div class=&quot;progress-message&quot; id=&quot;centerMessage&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;eula-overlay&quot; id=&quot;eulaOverlay&quot;&gt;
+        &lt;div class=&quot;eula-modal&quot;&gt;
+            &lt;div class=&quot;eula-header&quot;&gt;
+                &lt;h2&gt;📜 사용권 계약서&lt;/h2&gt;
+                &lt;p&gt;Software End-User License Agreement (EULA)&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;eula-content&quot;&gt;
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;중요 안내&lt;/h3&gt;
+                    &lt;p&gt;본 소프트웨어를 사용하기 전에 다음 약관을 반드시 읽어주세요.&lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;이미지를 업로드하거나 어떠한 기능이든 사용하는 것은 본 계약서의 모든 조항에 동의한 것으로 간주됩니다.&lt;/strong&gt;&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-highlight&quot;&gt;
+                    &lt;strong&gt;⚠️ 핵심 사항&lt;/strong&gt;&lt;br&gt;
+                    • 개인적/비영리 목적으로만 사용 가능&lt;br&gt;
+                    • 배포, 재판매, 상업적 이용 엄격히 금지&lt;br&gt;
+                    • 업로드한 이미지는 브라우저에서만 처리 (서버 전송 없음)
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;1. 사용권 허여&lt;/h3&gt;
+                    &lt;p&gt;본 소프트웨어는 개인적인 학습, 교육, 비영리 연구 목적으로만 사용할 수 있습니다.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;2. 사용 제한&lt;/h3&gt;
+                    &lt;p&gt;&lt;strong&gt;금지 사항:&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;• 재배포, 공유, 게시, 업로드&lt;/p&gt;
+                    &lt;p&gt;• 수정본 배포&lt;/p&gt;
+                    &lt;p&gt;• 상업적 이용 (영리 활동, 판매, 유료 서비스 등)&lt;/p&gt;
+                    &lt;p&gt;• 라이선스 재부여 또는 판매&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;3. 저작권&lt;/h3&gt;
+                    &lt;p&gt;Copyright © 2026 &lt;strong&gt;Velvitty(연이. Yeony.)&lt;/strong&gt;. All Rights Reserved.&lt;/p&gt;
+                    &lt;p&gt;모든 지적재산권은 원저작자에게 있습니다.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;4. 보증 부인 및 책임 제한&lt;/h3&gt;
+                    &lt;p&gt;본 소프트웨어는 &quot;있는 그대로(AS-IS)&quot; 제공되며, 어떠한 보증도 하지 않습니다.&lt;/p&gt;
+                    &lt;p&gt;소프트웨어 사용으로 인한 손해에 대해 원저작자는 책임지지 않습니다.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-section&quot;&gt;
+                    &lt;h3&gt;5. 데이터 처리&lt;/h3&gt;
+                    &lt;p&gt;업로드한 이미지는 사용자의 브라우저에서만 처리되며, 서버로 전송되지 않습니다.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;eula-checkbox&quot;&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;checkbox&quot; id=&quot;eulaCheck1&quot;&gt;
+                        &lt;span&gt;본 사용권 계약서를 읽고 이해했으며, 모든 조항에 동의합니다.&lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;checkbox&quot; id=&quot;eulaCheck2&quot;&gt;
+                        &lt;span&gt;본 소프트웨어를 개인적/비영리 목적으로만 사용할 것을 약속합니다.&lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;checkbox&quot; id=&quot;eulaCheck3&quot;&gt;
+                        &lt;span&gt;본 소프트웨어를 배포, 재판매, 상업적으로 이용하지 않을 것을 약속합니다.&lt;/span&gt;
+                    &lt;/label&gt;
+                &lt;/div&gt;
+
+                &lt;p style=&quot;font-size: 0.85rem; color: rgba(0, 0, 0, 0.4); text-align: center; margin-top: 18px;&quot;&gt;
+                    전체 라이선스 조항은 LICENSE.txt 파일에서 확인할 수 있습니다.
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;eula-footer&quot;&gt;
+                &lt;button class=&quot;eula-btn eula-btn-decline&quot; id=&quot;eulaDecline&quot;&gt;동의하지 않음&lt;/button&gt;
+                &lt;button class=&quot;eula-btn eula-btn-accept&quot; id=&quot;eulaAccept&quot; disabled&gt;동의하고 시작하기&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;app&quot; id=&quot;mainApp&quot; style=&quot;display: none;&quot;&gt;
+        
+        &lt;div class=&quot;header&quot;&gt;
+            &lt;h1&gt;🎞️ 필름 필터 스튜디오&lt;/h1&gt;
+            &lt;div class=&quot;creator&quot;&gt;by &lt;strong&gt;Velvitty(연이-Yeony)&lt;/strong&gt;&lt;/div&gt;
+            &lt;p&gt;사진을 진짜 필름으로 찍은 것처럼 바꾸어 보세요&lt;/p&gt;
+        &lt;/div&gt;
+
+        
+        &lt;div class=&quot;main-grid&quot;&gt;
+            
+            &lt;div class=&quot;controls-panel&quot;&gt;
+                
+                &lt;div class=&quot;control-card glass&quot;&gt;
+                    &lt;h3&gt;📁 업로드&lt;/h3&gt;
+                    &lt;div class=&quot;upload-zone&quot; id=&quot;uploadZone&quot;&gt;
+                        &lt;div class=&quot;upload-icon&quot;&gt;📷&lt;/div&gt;
+                        &lt;div class=&quot;upload-text&quot;&gt;드래그하거나 클릭하세요&lt;/div&gt;
+                        &lt;div class=&quot;upload-hint&quot;&gt;JPG, PNG, WEBP • 용량 제한 없음&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&quot;file&quot; id=&quot;fileInput&quot; accept=&quot;image/*&quot; style=&quot;display: none;&quot;&gt;
+                &lt;/div&gt;
+
+                
+                &lt;div class=&quot;control-card glass&quot;&gt;
+                    &lt;h3&gt;🎞️ 필름 종류 &lt;span id=&quot;filmCount&quot;&gt;&lt;/span&gt;&lt;/h3&gt;
+                    &lt;div class=&quot;film-grid&quot; id=&quot;filmGrid&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                
+                &lt;div class=&quot;control-card glass&quot;&gt;
+                    &lt;h3&gt;🔬 선택한 필름의 특성&lt;/h3&gt;
+                    &lt;div class=&quot;film-info&quot; id=&quot;filmInfo&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                
+                &lt;div class=&quot;control-card glass&quot;&gt;
+                    &lt;h3&gt;⚙️ 필터 설정&lt;/h3&gt;
+                    &lt;div class=&quot;slider-control&quot;&gt;
+                        &lt;div class=&quot;slider-header&quot;&gt;
+                            &lt;span class=&quot;slider-label&quot;&gt;필름 룩 세기&lt;/span&gt;
+                            &lt;span class=&quot;slider-value&quot; id=&quot;intensityValue&quot;&gt;100%&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input type=&quot;range&quot; id=&quot;intensitySlider&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;slider-control&quot;&gt;
+                        &lt;div class=&quot;slider-header&quot;&gt;
+                            &lt;span class=&quot;slider-label&quot;&gt;입상성(그레인)&lt;/span&gt;
+                            &lt;span class=&quot;slider-value&quot; id=&quot;grainValue&quot;&gt;100%&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input type=&quot;range&quot; id=&quot;grainSlider&quot; min=&quot;0&quot; max=&quot;250&quot; value=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;slider-control&quot;&gt;
+                        &lt;div class=&quot;slider-header&quot;&gt;
+                            &lt;span class=&quot;slider-label&quot;&gt;할레이션&lt;/span&gt;
+                            &lt;span class=&quot;slider-value&quot; id=&quot;halationValue&quot;&gt;100%&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input type=&quot;range&quot; id=&quot;halationSlider&quot; min=&quot;0&quot; max=&quot;250&quot; value=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;select-row&quot;&gt;
+                        &lt;label for=&quot;formatSelect&quot;&gt;필름 포맷&lt;/label&gt;
+                        &lt;select id=&quot;formatSelect&quot;&gt;&lt;/select&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;hint&quot;&gt;포맷이 커질수록 인화 확대 배율이 낮아져, 같은 필름이라도 입자가 곱게 보입니다. 그레인 크기는 프레임 대비 실제 은입자 지름(µm)으로 계산됩니다.&lt;/div&gt;
+                    &lt;div class=&quot;select-row&quot;&gt;
+                        &lt;label for=&quot;qualitySelect&quot;&gt;처리 해상도&lt;/label&gt;
+                        &lt;select id=&quot;qualitySelect&quot;&gt;
+                            &lt;option value=&quot;0&quot;&gt;원본 그대로 (가장 느림)&lt;/option&gt;
+                            &lt;option value=&quot;24&quot;&gt;최대 24MP&lt;/option&gt;
+                            &lt;option value=&quot;12&quot; selected&gt;최대 12MP (권장)&lt;/option&gt;
+                            &lt;option value=&quot;6&quot;&gt;최대 6MP (빠름)&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                
+                &lt;div class=&quot;control-card glass&quot;&gt;
+                    &lt;h3&gt;🔭 빈티지 렌즈 수차&lt;/h3&gt;
+                    &lt;div class=&quot;select-row&quot; style=&quot;margin-top: 4px;&quot;&gt;
+                        &lt;label for=&quot;lensSelect&quot;&gt;렌즈 설계&lt;/label&gt;
+                        &lt;select id=&quot;lensSelect&quot;&gt;&lt;/select&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;slider-control&quot;&gt;
+                        &lt;div class=&quot;slider-header&quot;&gt;
+                            &lt;span class=&quot;slider-label&quot;&gt;수차 세기&lt;/span&gt;
+                            &lt;span class=&quot;slider-value&quot; id=&quot;lensValue&quot;&gt;100%&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;input type=&quot;range&quot; id=&quot;lensSlider&quot; min=&quot;0&quot; max=&quot;150&quot; value=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;hint&quot; id=&quot;lensNote&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                
+                &lt;div class=&quot;button-group&quot;&gt;
+                    &lt;button class=&quot;btn btn-primary&quot; id=&quot;applyBtn&quot; disabled&gt;
+                        &lt;span&gt;✨&lt;/span&gt;
+                        &lt;span&gt;필터 적용하기&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button class=&quot;btn btn-secondary&quot; id=&quot;downloadBtn&quot; disabled&gt;
+                        &lt;span&gt;⬇️&lt;/span&gt;
+                        &lt;span&gt;다운로드&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button class=&quot;btn btn-secondary&quot; id=&quot;resetBtn&quot;&gt;
+                        &lt;span&gt;🔄&lt;/span&gt;
+                        &lt;span&gt;처음으로&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            
+            &lt;div class=&quot;preview-panel glass&quot;&gt;
+                &lt;div class=&quot;preview-tabs&quot;&gt;
+                    &lt;button class=&quot;preview-tab active&quot; data-tab=&quot;original&quot;&gt;원본&lt;/button&gt;
+                    &lt;button class=&quot;preview-tab&quot; data-tab=&quot;filtered&quot;&gt;필터 적용&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;preview-content&quot; id=&quot;previewContent&quot;&gt;
+                    &lt;div class=&quot;empty-preview&quot; id=&quot;originalPreview&quot;&gt;
+                        &lt;svg fill=&quot;currentColor&quot; viewbox=&quot;0 0 24 24&quot;&gt;
+                            &lt;path d=&quot;M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z&quot;/&gt;
+                        &lt;/svg&gt;
+                        &lt;div style=&quot;font-size: 1.1rem; font-weight: 600; margin-bottom: 6px;&quot;&gt;이미지가 없어요&lt;/div&gt;
+                        &lt;div style=&quot;font-size: 0.9rem;&quot;&gt;사진을 업로드해서 시작하세요&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;empty-preview&quot; id=&quot;filteredPreview&quot; style=&quot;display: none;&quot;&gt;
+                        &lt;svg fill=&quot;currentColor&quot; viewbox=&quot;0 0 24 24&quot;&gt;
+                            &lt;path d=&quot;M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z&quot;/&gt;
+                        &lt;/svg&gt;
+                        &lt;div style=&quot;font-size: 1.1rem; font-weight: 600; margin-bottom: 6px;&quot;&gt;아직 필터를 안 적용했어요&lt;/div&gt;
+                        &lt;div style=&quot;font-size: 0.9rem;&quot;&gt;필름을 고르고 적용 버튼을 눌러보세요&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        &lt;div class=&quot;progress-card glass&quot;&gt;
+            &lt;div class=&quot;progress-header&quot;&gt;
+                &lt;div class=&quot;progress-title&quot;&gt;작업 진행 상황&lt;/div&gt;
+                &lt;div class=&quot;progress-percentage&quot; id=&quot;progressPercentage&quot;&gt;0%&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;progress-bar-container&quot;&gt;
+                &lt;div class=&quot;progress-bar&quot; id=&quot;progressBar&quot; style=&quot;width: 0%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;progress-log&quot; id=&quot;progressLog&quot;&gt;
+                &lt;div class=&quot;log-line&quot;&gt;준비 완료...&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        &lt;div class=&quot;footer&quot;&gt;
+            &lt;div style=&quot;margin-bottom: 8px;&quot;&gt;
+                &lt;strong&gt;필름 필터 스튜디오&lt;/strong&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;margin-bottom: 12px;&quot;&gt;
+                Copyright © 2026 &lt;strong&gt;Velvitty(연이. Yeony.)&lt;/strong&gt;. All Rights Reserved.
+            &lt;/div&gt;
+            &lt;div style=&quot;line-height: 1.5; max-width: 600px; margin: 0 auto;&quot;&gt;
+                개인적/비영리 학습 및 연구 목적으로만 사용 가능합니다.&lt;br&gt;
+                배포, 재판매, 상업적 이용은 엄격히 금지됩니다.
+            &lt;/div&gt;
+            &lt;div style=&quot;margin-top: 12px; font-size: 0.75rem; opacity: 0.7;&quot;&gt;
+                Personal &amp; Non-Commercial Use Only • No Distribution • No Commercial Use
+            &lt;/div&gt;
+            &lt;button&gt;
+                📜 사용권 계약서 다시 보기
+            &lt;/button&gt;
+            &lt;div style=&quot;margin-top: 8px; font-size: 0.75rem; opacity: 0.6;&quot;&gt;
+                본 소프트웨어의 사용은 사용권 계약에 대한 동의를 의미합니다.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;statusToast&quot;&gt;&lt;/div&gt;
+
+    
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe><button class="retry-surface" type="button" onclick="location.reload()" aria-label="연결을 다시 시도하려면 화면을 아무 곳이나 누르세요."></button><div class="scene" aria-hidden="true"></div><main class="glass" role="alert" aria-live="assertive" aria-labelledby="connection-message" aria-describedby="connection-guide"><h1 class="brand">Film Filter Studio</h1><div class="symbol"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a20 20 0 0 1 5-3m6-1a20 20 0 0 1 13 4M8 16a13 13 0 0 1 5-2m6 0a13 13 0 0 1 5 2M12 21a7 7 0 0 1 8 0M16 26h.01M4 4l24 24"/></svg></div><p class="primary" id="connection-message">인터넷 연결 상태가 불안정하여 어플리케이션을 실행할 수 없습니다.</p><p class="secondary" id="connection-guide">네트워크 환경을 확인해 주세요.</p><p class="retry-note">연결을 다시 시도하려면 화면을 아무 곳이나 누르세요.</p></main><script>function installGlassLens(root) {
   const doc = root.ownerDocument || root;
   const glass = root.querySelector('.glass');
   const backdrop = root.querySelector('.app-backdrop');
